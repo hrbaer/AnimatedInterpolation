@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+]>
+<svg version="1.1" id="fullscreen-icons" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="648px" height="504px" viewBox="0 0 648 504" enable-background="new 0 0 648 504" xml:space="preserve">
+<g id="icon-panel">
+	<g id="fullscreen-normal_1_">
+		<g>
+			<path fill="#FFFFFF" d="M0,220c0,17.7,14.3,32,32,32h260c17.7,0,32-14.3,32-32V32c0-17.7-14.3-32-32-32H32C14.3,0,0,14.3,0,32
+				V220z"/>
+		</g>
+		<path fill="none" stroke="#000000" stroke-width="12" stroke-linecap="square" stroke-miterlimit="10" d="M114,210H42v-54
+			 M210,210h72v-54 M282,96V42h-72 M114,42H42v54"/>
+	</g>
+	<g id="window-normal_1_">
+		<g>
+			<path fill="#FFFFFF" d="M324,220c0,17.7,14.3,32,32,32h260c17.7,0,32-14.3,32-32V32c0-17.7-14.3-32-32-32H356
+				c-17.7,0-32,14.3-32,32V220z"/>
+		</g>
+		
+			<rect x="402" y="78" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="square" stroke-miterlimit="10" width="168" height="96"/>
+		<path fill="none" stroke="#000000" stroke-width="12" stroke-linecap="square" stroke-miterlimit="10" d="M438,210h-72v-54
+			 M534,210h72v-54 M606,96V42h-72 M438,42h-72v54"/>
+	</g>
+	<g id="fullscreen-hilited_1_">
+		<g>
+			<path fill="#FFFFFF" d="M0,472c0,17.7,14.3,32,32,32h260c17.7,0,32-14.3,32-32V284c0-17.7-14.3-32-32-32H32
+				c-17.7,0-32,14.3-32,32V472z"/>
+		</g>
+		<path fill="none" stroke="#000000" stroke-width="18" stroke-linecap="square" stroke-miterlimit="10" d="M114,462H42v-54
+			 M210,462h72v-54 M282,348v-54h-72 M114,294H42v54"/>
+	</g>
+	<g id="window-hilited_1_">
+		<g>
+			<path fill="#FFFFFF" d="M324,472c0,17.7,14.3,32,32,32h260c17.7,0,32-14.3,32-32V284c0-17.7-14.3-32-32-32H356
+				c-17.7,0-32,14.3-32,32V472z"/>
+		</g>
+		
+			<rect x="399" y="327" fill="none" stroke="#000000" stroke-width="18" stroke-linecap="square" stroke-miterlimit="10" width="168" height="96"/>
+		<path fill="none" stroke="#000000" stroke-width="18" stroke-linecap="square" stroke-miterlimit="10" d="M435,459h-72v-54
+			 M531,459h72v-54 M603,345v-54h-72 M435,291h-72v54"/>
+	</g>
+</g>
+</svg>

@@ -1,0 +1,215 @@
+body {
+  font-family: "Helvetica Neue", sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+
+#window {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.ui-titlebar {
+  display: flex;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  height: 39px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: linear-gradient(0deg, #dadada, #efefef);
+  border-bottom: 1px solid #ccc;
+}
+
+.ui-main-title {
+  position: relative;
+  font-size: 16pt;
+  font-weight: 600;
+  display: inline-block;
+  margin: auto auto auto 0;
+  white-space: nowrap;
+}
+
+.ui-main-options {
+  width: 229px;
+  margin: auto 5px auto 0;
+}
+
+#fullscreen-button {
+  background-image: url(Fullscreen.svg);
+  background-size: 54px 42px;
+}
+
+.ui-main-title-button {
+  background-repeat: no-repeat;
+  background-position: left top;
+  margin: auto 20px auto 0;
+  width: 27px;
+  height: 21px;
+  cursor: pointer;
+}
+
+.ui-main-title-button.on {
+  background-position: right top;
+}
+
+.ui-main-title-button:hover {
+  background-position: bottom left;
+}
+
+.ui-main-title-button.on:hover {
+  background-position: bottom right;
+}
+
+.ui-side-panel {
+  position: absolute;
+  width: 229px;
+  top: 40px;
+  right: 0px;
+  bottom: 0px;
+  font-size: 10.5pt;
+  font-weight: 300;
+  padding: 10px 15px 10px 10px;
+  background-color: #eee;
+  cursor: default;
+  border-left: 1px solid #ddd;
+}
+
+.ui-bottom-panel {
+  position: absolute;
+  width: 229px;
+  right: 0px;
+  bottom: 0px;
+  font-size: 9.5pt;
+  padding: 10px 15px 10px 10px;
+  background-color: #eee;
+  cursor: default;
+  border-left: 1px solid #ddd;
+}
+
+.ui-title {
+  font-weight: 800;
+  padding-bottom: 7px
+}
+
+.ui-group-spacing {
+  width: 100%;
+  height: 12px;
+}
+
+.ui-side-panel>input {
+  width: 100%;
+}
+
+.ui-line {
+  margin: 4px 0 4px 0;
+}
+
+.ui-row {
+  width: 100%;
+  display: flex;
+}
+
+.ui-left {
+  display: inline-block;
+  margin-right: auto;
+}
+
+.ui-right {
+  display: inline-block;
+  margin-left: auto;
+}
+
+input[type=range] {
+  margin: 2px 0px 2px 0px;
+}
+
+.driver {
+  font: inherit;
+  display: block;
+  min-height: 20px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  outline: none;
+  background: white;
+}
+
+.driver:hover {
+  cursor: default;
+}
+
+.driver>div {
+  text-align: right;
+  margin: 2px 8px 2px 8px;
+}
+
+.field {
+  display: inline-block;
+  outline: none;
+}
+
+.field:hover {
+  cursor: pointer;
+}
+
+.field:focus {
+  color: #c00;
+}
+
+.map-keys-panel {
+  font-size: 9.5pt;
+  position: relative;
+  width: 100%;
+}
+
+.ui-description {
+  font-size: 9pt;
+  position: relative;
+  width: 100%;
+  margin: 5px 0px 5px 0px;
+}
+
+#viewer {
+  position: absolute;
+  left: 0px;
+  top: 40px;
+  right: 255px;
+  bottom: 0px;
+  font-size: 0;
+}
+
+#copyright {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  right: 255px;
+  margin: 2px 5px 3px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 9.5pt;
+  font-weight: 300;
+}
+
+.ns {
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  color: gray;
+}
+
+a:hover {
+  color: orange;
+}

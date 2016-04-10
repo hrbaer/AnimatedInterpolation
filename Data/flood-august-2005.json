@@ -1,0 +1,15 @@
+{
+  "description": {
+    "en": "Precipitation sums in mm over 24 hours. Interpolated measurements at intervals of 10 minutes from 65 gauging stations.",
+    "de": "Niederschlagssummen in mm über 24 Stunden. Interpolierte Messwerte aus 10-Minuten-Intervallen von insgesamt 65 Messstationen."
+  },
+	"type": "point-interpolation",
+	"map-file": "Data/CH_24.svg",
+	"data-file": "Data/precsum2005-8.txt",
+	"loc-file": "Data/mch_stations.txt",
+	"data-range": [0, 160],
+	"color-brewer": [{ "name": "Blues", "size": "8" }],
+	"time-period": { "start": "2005-08-21T00:00:00+02:00", "stop": "2005-08-24T00:00:00+02:00" },
+	"bounds": [480000, 74000, 850000, 302000],
+  "animation": "30 s"
+}

@@ -1,0 +1,149 @@
+<!--
+  HTML fragment shader source
+
+  A N I M A T E D   I N T E R P O L A T I O N
+  
+  Author:
+  H. R. Baer
+  hbaer@ethz.ch
+  
+  Version history:
+  0.2.0: 09/04/2016
+-->
+
+<script id="copyVertices" type="x-shader/x-vertex"> 
+
+  attribute vec4 vPosition;
+  attribute vec4 vTexCoord;
+  varying vec2 texCoord;
+
+  void main()
+  {
+    gl_Position = vPosition;
+    texCoord = vTexCoord.xy;
+  }
+
+</script>
+
+<!-- IDW interpolation from 2D texture data -->
+<script id="interpolate" type="x-shader/x-fragment"> 
+
+  precision highp float;
+
+  uniform sampler2D data;
+  uniform vec2 wh;
+  uniform float power;
+  uniform float time;
+  uniform int stations;
+  uniform int times;
+  varying vec2 texCoord;
+
+  void main(void)
+  {
+    vec4 d = vec4(1.0);
+    vec2 t = texCoord * wh;
+    float vsum = 0.0;
+    float wsum = 0.0;
+    for (int i = 0; i < SIZE; ++i)
+    {
+      // Interpolate time from center of first to center of last pixel
+      float x = (0.5 + time * float(times - 1)) / float(times);
+      float y = (float(i) + 0.5) / float(stations);
+      d = texture2D(data, vec2(x, y));
+      float dist = distance(t, d.xy * wh);
+      float weight = 1.0 / pow(dist, power);
+      vsum += weight * d.w;
+      wsum += weight;
+    }
+    float v = wsum == 0.0 ? 0.0 : vsum / wsum;
+    gl_FragColor = vec4(v, v, d.z, d.w);
+  }
+
+</script>
+
+<!-- Data modelling using raster data such as a DTM -->
+<script id="model" type="x-shader/x-fragment"> 
+
+  precision highp float;
+
+  uniform sampler2D source;
+  uniform sampler2D dtm;
+  varying vec2 texCoord;
+
+  void main(void)
+  {
+    vec4 c = texture2D(source, texCoord);
+    vec4 d = texture2D(dtm, vec2(texCoord.x, 1.0 - texCoord.y));
+    float v = c.r + c.z * d.a;
+    gl_FragColor = vec4(v, 0.0, 0.0, d.a);
+  }
+
+</script>
+
+<!-- Color coding and shading of interpolated values -->
+<script id="colorCodeAndShade" type="x-shader/x-fragment"> 
+
+  precision highp float;
+
+  uniform sampler2D source;
+  uniform sampler2D colorscale;
+  uniform float dx, dy, sz, minval, maxval;
+  const float azimuth = 315.0;
+  const float elevation = 45.0;
+  const float ambient = 0.6;
+  const float diffuse = 0.2;
+  const float specular = 0.2;
+  const float roughness = 20.0;
+
+  varying vec2 texCoord;
+
+  float getShades()
+  {
+    vec3 lightVector = normalize(vec3(sin(radians(azimuth)), cos(radians(azimuth)), tan(radians(elevation))));
+    float z00 = texture2D(source, texCoord).r;
+    float z10 = texture2D(source, texCoord + vec2(dx, 0.0)).r;
+    float z01 = texture2D(source, texCoord + vec2(0.0, dy)).r;
+    vec3 normalVector = normalize(cross(vec3(1.0, 0.0, sz * (z10 - z00)), vec3(0.0, 1.0, sz * (z01 - z00))));
+    vec3 specularVector = normalize(lightVector + normalVector);
+    float diffuseIntensity = diffuse * dot(normalVector, lightVector);
+    float specularIntensity = specular * pow(dot(specularVector, lightVector), roughness);
+    float intensity = ambient + diffuseIntensity + specularIntensity;
+    return intensity;
+  }
+
+  void main(void)
+  {
+    vec4 c0 = texture2D(source, texCoord);
+    if (c0.a <= 0.0)
+    {
+      gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+    }
+    else
+    {
+      float v = c0.r;
+      vec4 c = texture2D(colorscale, vec2((v - minval) / (maxval - minval), 0.0));
+      float shades = getShades();
+      gl_FragColor = c * (pow(shades, 0.5));
+      gl_FragColor.a = 1.0;
+    }
+  }
+
+</script>
+
+<!-- Combine base map and and interpolated surface -->
+<script id="copyTexture" type="x-shader/x-fragment"> 
+
+  precision highp float;
+  uniform sampler2D source;
+  uniform sampler2D map;
+  uniform float blending;
+  varying vec2 texCoord;
+
+  void main()
+  {
+    vec4 srcColor = texture2D(source, texCoord);
+    vec4 mapColor = texture2D(map, vec2(texCoord.x, 1.0 - texCoord.y));
+    gl_FragColor = (mapColor * blending + vec4(1.0) * (1.0 - blending)) * srcColor;
+  }
+
+</script>

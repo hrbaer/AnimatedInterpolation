@@ -1,0 +1,83 @@
+/* The map keys take the hole space */
+.map-keys-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* HORIZONTAL LAYOUT */
+.map-keys-container.horizontal {
+  flex-direction: column;
+}
+
+/* Symbols and values organized in rows */
+.map-keys-container.horizontal>.keys-panel {
+  flex-direction: row;
+}
+
+.map-keys-container.horizontal>.values-panel {
+  flex-direction: row;
+  margin-top: 4px;
+}
+
+/* Values are centered and evenly spaced */
+.map-keys-container.horizontal .values-box {
+  width: 0;
+  justify-content: center;
+}
+
+.map-keys-container.horizontal .symbols-box {
+  min-height: 12px;
+}
+
+/* VERTICAL LAYOUT */
+.map-keys-container.vertical {
+  flex-direction: rows;
+}
+
+/* Symbols and values organized in columns */
+.map-keys-container.vertical>.keys-panel {
+  flex-direction: column;
+}
+
+.map-keys-container.vertical>.values-panel {
+  flex-direction: column;
+  margin-left: 5px;
+}
+
+/* Change order to bottom to top */
+.map-keys-container.vertical.reverse>.keys-panel,.map-keys-container.vertical.reverse>.values-panel {
+  flex-direction: column-reverse;
+}
+
+.map-keys-container.vertical .values-box {
+  height: 0;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.map-keys-container.vertical .symbols-box {
+  min-width: 30px;
+  min-height: 10px;
+}
+
+.keys-panel,.values-panel {
+  display: flex;
+}
+
+.symbols-box {
+  flex-grow: 2;
+}
+
+.values-box {
+  flex-grow: 2;
+  display: flex;
+  font-size: 8pt;
+  /* transform: rotate(-20deg); */
+}
+
+/* Do not display the upper and lower limit if there are more keys than symbols */
+.values-panel.hide-ends>.values-box:first-child,.values-panel.hide-ends>.values-box:last-child {
+  visibility: hidden;
+  flex-grow: 1;
+}

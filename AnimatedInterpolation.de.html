@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+  <title>Rainy Days</title>
+  <script src="./Libs/GLProgram.js"></script>
+  <script src="./Libs/GLFramebuffer.js"></script>
+  <script src="./Libs/GLError.js"></script>
+  <script src="./Libs/Grid.js"></script>
+  <script src="./Libs/DriveIn.js"></script>
+  <script src="./Libs/MapKeys.js"></script>
+  <script src="./Libs/d3.min.js"></script>
+  <script src="./Libs/colorbrewer.js"></script>
+  <script src="./JS/AnimatedInterpolation.js"></script> 
+  <script src="./JS/TimeDriver.js"></script> 
+  <script src="./JS/DocumentHelpers.js"></script> 
+  <script src="./JS/UIHelpers.js"></script> 
+  <link rel="stylesheet" href="UI/AnimatedInterpolation.css">
+  <link rel="stylesheet" href="UI/MapKeys.css">
+</head>
+<body>
+    
+    <!-- INTERIOR WINDOW -->
+    <div id="window">
+      
+      <!-- TITLE BAR -->
+      <div class="ui-titlebar">
+        <div class="ui-main-title">Animierte Interpolation</div>
+        <div id="fullscreen-button" class="ui-main-title-button" title="Vollbild ein- oder ausschalten"></div>
+
+        <!-- CHOICE OF EPISODE -->
+        <select id="episode-options" class="ui-main-options" title="Wähle ein Ereignis">
+          <option value="" disabled selected>Ereignis auswählen</option>
+        </select>
+
+      </div>
+      
+      <!-- SIDE PANEL -->
+      <div class="ui-side-panel">
+      
+        <div class="ui-title">Animation</div>
+        <div class="ui-row">
+          <div class="ui-left">Animationsdauer</div>
+          <div id="label-animation" class="ui-right"></div>
+        </div>
+        <input type="range" id="slider-animation" min="0" max="20" value="11" step="1" title="Dauer der animierten Sequenz">
+        
+        <div class="ui-line">Datum und Zeit</div>
+        <div id="drive-date-time" class="driver ui-line"></div>
+        
+        <input id="reset-button" type="button" value="Zeit zurücksetzen">
+        <div class="ui-group-spacing"></div>
+        
+        <div class="ui-title">Darstellung</div>
+        <div class="ui-row">
+          <div class="ui-left">Schattierung</div>
+          <div id="label-shading" class="ui-right"></div>
+        </div>
+        <input type="range" id="slider-shading" min="0.0" max="5.0" value="1" step="0.1" title="Stärke derSchattierung">
+        
+        <div class="ui-row">
+          <div class="ui-left">Basiskarte einblenden</div>
+          <div id="label-blending" class="ui-right"></div><span>%</span>
+        </div>
+        <input type="range" id="slider-blending" min="0" max="100" value="100" title="Einblenden der Basiskarte">
+        <div class="ui-group-spacing"></div>
+        
+        <!-- Map keys -->
+        <div class="ui-title">Legende</div>
+        <div class="map-keys-panel" id="map-keys-panel"></div>
+        <div class="ui-description" id="map-description"></div>
+
+        <!-- INFO -->
+        <div class="ui-bottom-panel">
+          <div class="ui-row">
+            <div class="ui-left">Bilder pro Sekunde</div>
+            <div id="label-frames" class="ui-right">0</div>
+          </div>
+        </div>
+      
+      </div>
+      
+      <!-- VIEWER -->
+      <div id="viewer">
+        <canvas id="canvas1" width="0" height="0"></canvas>
+      </div>
+    
+      <!-- COPYRIGHT -->
+      <div id="copyright"><a href="http://www.ikg.ethz.ch" target="_blank">© 2016: Schweizer Weltatlas – Institut für Kartografie und Geoinformation, ETH Zürich</a></div>
+      
+    </div>
+    
+  </body>
+</body>
+</html>
